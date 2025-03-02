@@ -22,7 +22,7 @@ function App() {
             isLoggedIn ? <Navigate to="/designdisplay" /> : <Login setIsLoggedIn={setIsLoggedIn} />
           }
         />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/designdisplay"
