@@ -65,7 +65,7 @@ const Login = ({ setIsLoggedIn }) => {
           </button>
         </form>
         <div className="mt-6 text-blue-500 text-center">
-          <a href="/Signup" className="hover:underline">Sign up Here</a>
+          <a href="/signup" className="hover:underline">Sign up Here</a>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ const Home = () => {
           {/* Left Content */}
           <div className="lg:w-1/2 text-center lg:text-left">
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-              Welcome to <span className="text-blue-300">Inter Design</span>
+              Welcome to <span className="text-blue-300">virtual home planner </span>
             </h1>
             <p className="text-lg text-gray-300 mb-8">
               Explore modern and innovative interior designs that transform your

@@ -16,99 +16,28 @@ import td7 from "../assets/3d7.png";
 import id8 from "../assets/id8.png";
 import td8 from "../assets/3d8.png";
 
-
 const DesignDisplay = () => {
-  // State to store the selected length and breadth
-  const [selectedLength, setSelectedLength] = useState("");
-  const [selectedBreadth, setSelectedBreadth] = useState("");
+  // State to store the selected square footage
+  const [selectedSqFt, setSelectedSqFt] = useState("");
 
   // Sample design data for 8 designs
   const designs = [
-    {
-      id: 1,
-      length: 20,
-      breadth: 25,
-      title: "Compact Apartment",
-      description: "A compact design for small spaces.",
-      image2D: id1,
-      image3D: td1,
-    },
-    {
-      id: 2,
-      length: 30,
-      breadth: 40,
-      title: "Spacious Home",
-      description: "A spacious design for medium-sized homes.",
-      image2D: id2,
-      image3D: td2,
-    },
-    {
-      id: 3,
-      length: 40,
-      breadth: 50,
-      title: "Luxury Villa",
-      description: "A luxurious design for large homes.",
-      image2D: id3,
-      image3D: td3,
-    },
-    {
-      id: 4,
-      length: 25,
-      breadth: 35,
-      title: "Modern Office",
-      description: "An innovative design for a modern office.",
-      image2D: id4,
-      image3D: td4,
-    },
-    {
-      id: 5,
-      length: 15,
-      breadth: 20,
-      title: "Small Studio",
-      description: "Perfect for single-room studios or tiny homes.",
-      image2D: id5,
-      image3D: td5,
-    },
-    {
-      id: 6,
-      length: 50,
-      breadth: 70,
-      title: "Elegant Mansion",
-      description: "An elegant design for a luxurious mansion.",
-      image2D: id6,
-      image3D: td6,
-    },
-    {
-      id: 7,
-      length: 35,
-      breadth: 45,
-      title: "Family House",
-      description: "A perfect home for a family of 4-6 people.",
-      image2D: id7,
-      image3D: td7,
-    },
-    {
-      id: 8,
-      length: 60,
-      breadth: 80,
-      title: "Luxury Estate",
-      description: "A grand design for an opulent estate.",
-      image2D: id8,
-      image3D: td8,
-    },
+    { id: 1, sqFt: 900, title: "Compact Apartment", description: "A compact design for small spaces.", image2D: id1, image3D: td1 },
+    { id: 2, sqFt: 1000, title: "Spacious Home", description: "A spacious design for medium-sized homes.", image2D: id2, image3D: td2 },
+    { id: 3, sqFt: 1200, title: "Luxury Villa", description: "A luxurious design for large homes.", image2D: id3, image3D: td3 },
+    { id: 4, sqFt: 1300, title: "Modern Office", description: "An innovative design for a modern office.", image2D: id4, image3D: td4 },
+    { id: 5, sqFt: 1400, title: "Small Studio", description: "Perfect for single-room studios or tiny homes.", image2D: id5, image3D: td5 },
+    { id: 6, sqFt: 1500, title: "Elegant Mansion", description: "An elegant design for a luxurious mansion.", image2D: id6, image3D: td6 },
+    { id: 7, sqFt: 1800, title: "Family House", description: "A perfect home for a family of 4-6 people.", image2D: id7, image3D: td7 },
+    { id: 8, sqFt: 4800, title: "Luxury Estate", description: "A grand design for an opulent estate.", image2D: id8, image3D: td8 },
   ];
 
-  // Extract unique lengths and breadths for dropdown options
-  const lengths = [...new Set(designs.map((design) => design.length))];
-  const breadths = [...new Set(designs.map((design) => design.breadth))];
+  // Extract unique square footage options
+  const squareFeetOptions = [...new Set(designs.map(design => design.sqFt))].sort((a, b) => a - b);
 
-  // Filter designs based on the selected length and breadth
+  // Filter designs based on selected square footage
   const filteredDesigns = designs.filter(
-    (design) =>
-      selectedLength &&
-      selectedBreadth &&
-      design.length === Number(selectedLength) &&
-      design.breadth === Number(selectedBreadth)
+    (design) => selectedSqFt && design.sqFt === Number(selectedSqFt)
   );
 
   return (
@@ -118,100 +47,47 @@ const DesignDisplay = () => {
           Interior Design Display
         </h1>
 
-        {/* Card with Length and Breadth Dropdowns */}
+        {/* Dropdown for Square Footage */}
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-3xl font-bold text-blue-900 mb-4">
-            Select Room Dimensions
+            Select Square Footage
           </h2>
-
-          {/* Length and Breadth Dropdowns */}
-          <div className="flex flex-col md:flex-row items-center justify-center mb-8">
-            <div className="md:mr-4 mb-4 md:mb-0">
-              <label
-                htmlFor="length"
-                className="block text-lg font-medium text-gray-700 mb-2"
-              >
-                Length (ft):
-              </label>
-              <select
-                id="length"
-                value={selectedLength}
-                onChange={(e) => setSelectedLength(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="">-- Select Length --</option>
-                {lengths.map((length) => (
-                  <option key={length} value={length}>
-                    {length} ft
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label
-                htmlFor="breadth"
-                className="block text-lg font-medium text-gray-700 mb-2"
-              >
-                Breadth (ft):
-              </label>
-              <select
-                id="breadth"
-                value={selectedBreadth}
-                onChange={(e) => setSelectedBreadth(e.target.value)}
-                className="px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="">-- Select Breadth --</option>
-                {breadths.map((breadth) => (
-                  <option key={breadth} value={breadth}>
-                    {breadth} ft
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="flex justify-center mb-8">
+            <select
+              value={selectedSqFt}
+              onChange={(e) => setSelectedSqFt(e.target.value)}
+              className="px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="">-- Select Square Ft --</option>
+              {squareFeetOptions.map((sqFt) => (
+                <option key={sqFt} value={sqFt}>{sqFt} sq ft</option>
+              ))}
+            </select>
           </div>
 
           {/* Display Filtered Designs */}
           {filteredDesigns.length > 0 ? (
             filteredDesigns.map((design) => (
-              <div
-                key={design.id}
-                className="mb-12 bg-gray-50 p-6 rounded-lg shadow-lg"
-              >
-                <h3 className="text-2xl font-bold text-blue-700 mb-4">
-                  {design.title}
-                </h3>
+              <div key={design.id} className="mb-12 bg-gray-50 p-6 rounded-lg shadow-lg">
+                <h3 className="text-2xl font-bold text-blue-700 mb-4">{design.title}</h3>
                 <p className="text-lg text-gray-600 mb-6">{design.description}</p>
                 <div className="flex flex-wrap -mx-4">
-                  {/* 2D Design */}
                   <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-                    <h4 className="text-xl font-semibold text-blue-700 mb-4">
-                      2D Design
-                    </h4>
-                    <img
-                      src={design.image2D}
-                      alt={`${design.title} 2D`}
-                      className="rounded-lg shadow-lg"
-                    />
+                    <h4 className="text-xl font-semibold text-blue-700 mb-4">2D Design</h4>
+                    <img src={design.image2D} alt={`${design.title} 2D`} className="rounded-lg shadow-lg" />
                   </div>
-                  {/* 3D Design */}
                   <div className="w-full md:w-1/2 px-4">
-                    <h4 className="text-xl font-semibold text-blue-700 mb-4">
-                      3D Design
-                    </h4>
-                    <img
-                      src={design.image3D}
-                      alt={`${design.title} 3D`}
-                      className="rounded-lg shadow-lg"
-                    />
+                    <h4 className="text-xl font-semibold text-blue-700 mb-4">3D Design</h4>
+                    <img src={design.image3D} alt={`${design.title} 3D`} className="rounded-lg shadow-lg" />
                   </div>
                 </div>
               </div>
             ))
           ) : (
             <p className="text-center text-gray-500 text-lg">
-              {selectedLength && selectedBreadth
-                ? "No designs found for the selected dimensions. Please try different values."
-                : "Select length and breadth to view available designs."}
+              {selectedSqFt
+                ? "No designs found for the selected square footage. Please try different values."
+                : "Select square footage to view available designs."}
             </p>
           )}
         </div>

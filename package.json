@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@huggingface/inference": "^3.3.4",
+    "@react-google-maps/api": "^2.20.6",
     "cra-template": "1.2.0",
     "firebase": "^11.4.0",
     "react": "^19.0.0",

@@ -4,7 +4,7 @@ const About = () => {
   const reviews = [
     {
       name: "John Doe",
-      review: "Inter Design transformed my living room into a masterpiece. The team was professional, and the result exceeded my expectations!",
+      review: "virtual home planner  transformed my living room into a masterpiece. The team was professional, and the result exceeded my expectations!",
       rating: 5,
     },
     {

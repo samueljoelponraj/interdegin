@@ -13,7 +13,7 @@ const Navbar = () => {
               href="/"
               className="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline"
             >
-              Inter Design
+              virtual home planner 
             </a>
             <button
               className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
